@@ -128,10 +128,10 @@ SimulationResult SignalGenerator::generate_scenario(const Config& config) {
         size_t n_fft = config.fft_size;
         size_t n_samples = config.num_samples;
 
-        // In an N_fft window, noise floor per bin is sigma_sq / n_fft
-        // 10 dB above floor means power per bin is 10.0 * (sigma_sq / n_fft)
-        // Scaled to full N_samples IFFT:
-        double int_bin_var = 10.0 * (sigma_sq / static_cast<double>(n_fft)) * static_cast<double>(n_samples);
+        // In an N_fft window, power per bin in the band should be 10 dB above noise floor
+        // With sum(w^2) normalization, noise floor per bin is sigma_sq
+        // 10 dB above floor means power spectral density is 10.0 * sigma_sq
+        double int_bin_var = 10.0 * sigma_sq * static_cast<double>(n_samples);
 
         SampleVector freq_domain(n_samples, Complex(0.0, 0.0));
         double df = config.fs / static_cast<double>(n_samples);

@@ -3,8 +3,17 @@
 #include "spectrum_sentinel/common.hpp"
 #include "spectrum_sentinel/interference_detector.hpp"
 #include <vector>
+#include <string>
+#include <map>
 
 namespace spectrum_sentinel {
+
+struct WindowConfusionMatrix {
+    int tp{0};
+    int fp{0};
+    int tn{0};
+    int fn{0};
+};
 
 struct EvaluationMetrics {
     int tp{0};
@@ -18,11 +27,10 @@ struct EvaluationMetrics {
     bool f1_defined{false};
     double false_alarms_per_minute{0.0};
     double mean_detection_delay_sec{0.0};
-    // Window-level confusion
-    int win_tp{0};
-    int win_fp{0};
-    int win_tn{0};
-    int win_fn{0};
+
+    WindowConfusionMatrix window_confusion;
+    // Event-level type confusion: true_type -> (pred_type -> count)
+    std::map<std::string, std::map<std::string, int>> type_confusion;
 };
 
 class DetectionEvaluator {
@@ -32,6 +40,15 @@ public:
         const std::vector<DetectedEvent>& detections,
         double total_duration,
         double window_duration);
+
+    // Converts metrics to JSON string
+    static std::string to_json(const EvaluationMetrics& metrics);
+
+    // Writes metrics.json
+    static bool write_metrics_json(const std::string& filepath, const EvaluationMetrics& metrics);
+
+    // Writes events.json
+    static bool write_events_json(const std::string& filepath, const std::vector<DetectedEvent>& events);
 };
 
 } // namespace spectrum_sentinel

@@ -36,7 +36,7 @@ struct Config {
     std::string scenario{"clean"};
     uint64_t seed{42};
     std::string output_dir{"results/clean"};
-    double threshold_db{13.0};
+    double threshold_db{20.0};
     double noise_floor_floor_db{-160.0};
 };
 

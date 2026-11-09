@@ -8,6 +8,6 @@
   "scenario": "clean",
   "seed": 42,
   "output_dir": "results/clean",
-  "threshold_db": 13.0,
+  "threshold_db": 20.0,
   "noise_floor_floor_db": -160.0
 }

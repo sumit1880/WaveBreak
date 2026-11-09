@@ -60,6 +60,7 @@ set(TEST_SOURCES
     tests/test_signal_generator.cpp
     tests/test_config_loader.cpp
     tests/test_cli_and_io.cpp
+    tests/test_detector_and_evaluator.cpp
 )
 
 add_executable(spectrum_sentinel_tests ${TEST_SOURCES})

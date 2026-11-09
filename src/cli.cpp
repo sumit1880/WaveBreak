@@ -2,6 +2,8 @@
 #include "spectrum_sentinel/config_loader.hpp"
 #include "spectrum_sentinel/signal_generator.hpp"
 #include "spectrum_sentinel/spectrum_analyzer.hpp"
+#include "spectrum_sentinel/interference_detector.hpp"
+#include "spectrum_sentinel/detection_evaluator.hpp"
 #include "spectrum_sentinel/io_writers.hpp"
 #include "spectrum_sentinel/experiment_runner.hpp"
 #include <iostream>
@@ -55,13 +57,10 @@ int CLI::run(int argc, char* argv[]) {
 
     if (command == "simulate") {
         Config cfg;
-        // Check if default config exists in config/default_config.json
         if (fs::exists("config/default_config.json")) {
             try {
                 cfg = ConfigLoader::load_from_file("config/default_config.json");
-            } catch (...) {
-                // fall back to default struct values
-            }
+            } catch (...) {}
         }
 
         std::string config_file;
@@ -91,7 +90,6 @@ int CLI::run(int argc, char* argv[]) {
             }
         }
 
-        // If config file was specified, load it
         if (!config_file.empty()) {
             try {
                 cfg = ConfigLoader::load_from_file(config_file);
@@ -101,7 +99,6 @@ int CLI::run(int argc, char* argv[]) {
             }
         }
 
-        // CLI flags override config
         if (!scenario_arg.empty()) {
             cfg.scenario = scenario_arg;
         }
@@ -111,11 +108,9 @@ int CLI::run(int argc, char* argv[]) {
         if (!out_arg.empty()) {
             cfg.output_dir = out_arg;
         } else {
-            // Default output dir to results/<scenario>
             cfg.output_dir = "results/" + cfg.scenario;
         }
 
-        // Validate config
         try {
             ConfigLoader::validate(cfg);
         } catch (const std::exception& e) {
@@ -123,19 +118,15 @@ int CLI::run(int argc, char* argv[]) {
             return static_cast<int>(ExitCode::UsageError);
         }
 
-        // Run simulation
         try {
             SimulationResult sim = SignalGenerator::generate_scenario(cfg);
 
-            // Compute spectrogram
             SpectrogramResult spec = SpectrumAnalyzer::compute_spectrogram(
                 sim.samples, cfg.fft_size, cfg.hop_size, cfg.fs, cfg.noise_floor_floor_db
             );
 
-            // Decimate spectrogram bins to <= 512 if larger
             auto decimated_spec = SpectrumAnalyzer::decimate_bins(spec.power_db, 512);
 
-            // Create output directory
             if (!IoWriters::ensure_directory(cfg.output_dir)) {
                 std::cerr << "File I/O error: could not create output directory " << cfg.output_dir << "\n";
                 return static_cast<int>(ExitCode::FileIOError);
@@ -178,20 +169,108 @@ int CLI::run(int argc, char* argv[]) {
         }
     }
     else if (command == "analyze") {
-        std::cout << "analyze command will be activated in Phase 2.\n";
+        std::string input_path;
+        std::string meta_path;
+        std::string out_dir;
+
+        for (int i = 2; i < argc; ++i) {
+            std::string arg = argv[i];
+            if (arg == "--input" && i + 1 < argc) {
+                input_path = argv[++i];
+            } else if (arg == "--meta" && i + 1 < argc) {
+                meta_path = argv[++i];
+            } else if (arg == "--out" && i + 1 < argc) {
+                out_dir = argv[++i];
+            } else {
+                std::cerr << "Error: Unknown argument: " << arg << "\n";
+                print_usage();
+                return static_cast<int>(ExitCode::UsageError);
+            }
+        }
+
+        if (input_path.empty() || meta_path.empty()) {
+            std::cerr << "Error: --input and --meta are required for analyze command.\n";
+            print_usage();
+            return static_cast<int>(ExitCode::UsageError);
+        }
+
+        if (out_dir.empty()) {
+            fs::path p(input_path);
+            out_dir = p.has_parent_path() ? p.parent_path().string() : ".";
+        }
+
+        SampleVector samples;
+        if (!IoWriters::read_samples_csv(input_path, samples)) {
+            std::cerr << "File I/O error: failed reading input samples from " << input_path << "\n";
+            return static_cast<int>(ExitCode::FileIOError);
+        }
+
+        double fs_val = 1e6;
+        size_t n_samples = 0;
+        std::string scenario;
+        uint64_t seed = 42;
+        if (!IoWriters::read_samples_meta_json(meta_path, fs_val, n_samples, scenario, seed)) {
+            std::cerr << "File I/O error: failed reading metadata from " << meta_path << "\n";
+            return static_cast<int>(ExitCode::FileIOError);
+        }
+
+        Config cfg;
+        cfg.fs = fs_val;
+        cfg.num_samples = samples.size();
+        cfg.scenario = scenario;
+        cfg.seed = seed;
+        cfg.output_dir = out_dir;
+
+        SpectrogramResult spec = SpectrumAnalyzer::compute_spectrogram(
+            samples, cfg.fft_size, cfg.hop_size, cfg.fs, cfg.noise_floor_floor_db
+        );
+
+        std::vector<DetectedEvent> dets = InterferenceDetector::detect(spec, cfg);
+
+        std::string events_path = out_dir + "/events.json";
+        if (!DetectionEvaluator::write_events_json(events_path, dets)) {
+            std::cerr << "File I/O error: failed writing " << events_path << "\n";
+            return static_cast<int>(ExitCode::FileIOError);
+        }
+
+        std::cout << "Analysis complete. Detected " << dets.size() << " event(s).\n"
+                  << "Events written to: " << events_path << "\n";
+
+        // If ground_truth.json exists in the input directory, evaluate metrics
+        std::string truth_path = out_dir + "/ground_truth.json";
+        if (fs::exists(truth_path)) {
+            std::vector<GroundTruthEvent> truth;
+            if (IoWriters::read_ground_truth_json(truth_path, truth)) {
+                double total_dur = static_cast<double>(samples.size()) / cfg.fs;
+                double win_dur = static_cast<double>(cfg.fft_size) / cfg.fs;
+                EvaluationMetrics m = DetectionEvaluator::evaluate(truth, dets, total_dur, win_dur);
+                std::string metrics_path = out_dir + "/metrics.json";
+                DetectionEvaluator::write_metrics_json(metrics_path, m);
+                std::cout << "Evaluation metrics written to: " << metrics_path << "\n"
+                          << "  TP=" << m.tp << " FP=" << m.fp << " FN=" << m.fn;
+                if (m.f1_defined) std::cout << " F1=" << m.f1;
+                std::cout << "\n";
+            }
+        }
+
         return static_cast<int>(ExitCode::Success);
     }
     else if (command == "evaluate") {
-        std::cout << "evaluate command will be activated in Phase 2.\n";
-        return static_cast<int>(ExitCode::Success);
+        std::string out_dir = "results";
+        for (int i = 2; i < argc; ++i) {
+            std::string arg = argv[i];
+            if (arg == "--out" && i + 1 < argc) {
+                out_dir = argv[++i];
+            }
+        }
+        Config cfg;
+        return ExperimentRunner::run_all_experiments(cfg, out_dir);
     }
     else if (command == "benchmark") {
-        std::cout << "benchmark command will be activated in Phase 2.\n";
-        return static_cast<int>(ExitCode::Success);
+        return ExperimentRunner::run_benchmark();
     }
     else if (command == "demo") {
-        std::cout << "demo command will be activated in Phase 2.\n";
-        return static_cast<int>(ExitCode::Success);
+        return ExperimentRunner::run_demo();
     }
 
     std::cerr << "Error: Unknown command '" << command << "'\n";
