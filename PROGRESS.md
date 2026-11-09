@@ -18,6 +18,9 @@ experiment runner (8 scenarios × 30 seeds → summary.csv + summary.json). Defa
 CTest: 5212 assertions passed. evaluate → all 8 scenarios F1=1.000 (interference) or null/0 FA (clean).
 Benchmark (GCC 16.2.0, Release): 2^16=20 ms, 2^18=86 ms, 2^20=1382 ms (median over 20 iterations).
 
-## Phase 3 — IN PROGRESS
-Dashboard (Streamlit), PowerShell scripts, README with Mermaid diagram + real results,
-docs/interview_guide.md. Full clean-rebuild gate required.
+## Phase 3 — DONE ✓
+dashboard/app.py (Streamlit, read-only, 6 tabs: waveform/spectrum/spectrogram/events/metrics/summary),
+dashboard/requirements.txt, scripts/run_demo.ps1, scripts/run_experiments.ps1, README.md (Mermaid
+diagram, pipeline, real results), docs/interview_guide.md (10 Q&As).
+Gate: clean rebuild (21/21 steps), CTest 100% passed, both scripts ran without error (exit 0).
+Git commits: Phase 1 ad2610b, Phase 2 0ec004c, Phase 3 (this commit).
