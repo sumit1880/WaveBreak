@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": 299999.85,
+    "freq_min": 198814.81,
+    "freq_max": 401079.32,
+    "peak_power_db": 18.21,
+    "margin_db": 38.70,
+    "spectral_category": "narrowband",
+    "temporal_flag": "continuous",
+    "severity": "high",
+    "reason": "Narrowband tone detected at +300.0 kHz with 38.7 dB margin above median noise floor (continuous)"
+  }
+]

@@ -9,8 +9,9 @@ lib/
 *.lib
 *.pdb
 
-# Results & outputs
-results/
+# Results - sample data committed for dashboard demo
+# Uncomment the line below to ignore results locally
+# results/
 
 # Python cache & venv
 __pycache__/

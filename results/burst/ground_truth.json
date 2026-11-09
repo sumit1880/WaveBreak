@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "type": "narrowband",
+    "start_time": 0.040000,
+    "end_time": 0.060000,
+    "frequency": 250000.00,
+    "freq_min": 249000.00,
+    "freq_max": 251000.00,
+    "amplitude": 0.3000,
+    "power_db": -10.46
+  },
+  {
+    "id": 2,
+    "type": "narrowband",
+    "start_time": 0.120000,
+    "end_time": 0.140000,
+    "frequency": 250000.00,
+    "freq_min": 249000.00,
+    "freq_max": 251000.00,
+    "amplitude": 0.3000,
+    "power_db": -10.46
+  },
+  {
+    "id": 3,
+    "type": "narrowband",
+    "start_time": 0.200000,
+    "end_time": 0.220000,
+    "frequency": 250000.00,
+    "freq_min": 249000.00,
+    "freq_max": 251000.00,
+    "amplitude": 0.3000,
+    "power_db": -10.46
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": -199986.21,
+    "freq_min": -201477.09,
+    "freq_max": -198488.95,
+    "peak_power_db": 16.64,
+    "margin_db": 37.07,
+    "spectral_category": "narrowband",
+    "temporal_flag": "continuous",
+    "severity": "high",
+    "reason": "Narrowband tone detected at -200.0 kHz with 37.1 dB margin above median noise floor (continuous)"
+  },
+  {
+    "id": 2,
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": 350011.66,
+    "freq_min": 348046.54,
+    "freq_max": 351980.01,
+    "peak_power_db": 19.61,
+    "margin_db": 40.04,
+    "spectral_category": "narrowband",
+    "temporal_flag": "continuous",
+    "severity": "high",
+    "reason": "Narrowband tone detected at +350.0 kHz with 40.0 dB margin above median noise floor (continuous)"
+  }
+]

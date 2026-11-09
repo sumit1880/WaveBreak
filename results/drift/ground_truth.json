@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "type": "drift",
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": 300000.00,
+    "freq_min": 200000.00,
+    "freq_max": 400000.00,
+    "amplitude": 0.3000,
+    "power_db": -10.46
+  }
+]

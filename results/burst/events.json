@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "start_time": 0.039936,
+    "end_time": 0.059904,
+    "frequency": 250000.41,
+    "freq_min": 248519.61,
+    "freq_max": 251479.37,
+    "peak_power_db": 18.08,
+    "margin_db": 38.41,
+    "spectral_category": "narrowband",
+    "temporal_flag": "burst",
+    "severity": "high",
+    "reason": "Narrowband tone detected at +250.0 kHz with 38.4 dB margin above median noise floor (burst)"
+  },
+  {
+    "id": 2,
+    "start_time": 0.119296,
+    "end_time": 0.140288,
+    "frequency": 250005.29,
+    "freq_min": 248520.02,
+    "freq_max": 251671.16,
+    "peak_power_db": 18.03,
+    "margin_db": 38.32,
+    "spectral_category": "narrowband",
+    "temporal_flag": "burst",
+    "severity": "high",
+    "reason": "Narrowband tone detected at +250.0 kHz with 38.3 dB margin above median noise floor (burst)"
+  },
+  {
+    "id": 3,
+    "start_time": 0.199680,
+    "end_time": 0.220160,
+    "frequency": 249999.75,
+    "freq_min": 248512.77,
+    "freq_max": 251482.99,
+    "peak_power_db": 18.06,
+    "margin_db": 38.24,
+    "spectral_category": "narrowband",
+    "temporal_flag": "burst",
+    "severity": "high",
+    "reason": "Narrowband tone detected at +250.0 kHz with 38.2 dB margin above median noise floor (burst)"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": 281250.00,
+    "freq_min": 187500.00,
+    "freq_max": 375000.00,
+    "peak_power_db": -8.54,
+    "margin_db": 10.65,
+    "spectral_category": "broadband",
+    "temporal_flag": "continuous",
+    "severity": "medium",
+    "reason": "Broadband energy detected in [187.5, 375.0] kHz (187.5 kHz wide) with 10.7 dB margin above median noise floor (continuous)"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "fs": 1000000.0,
+  "num_samples": 262144,
+  "scenario": "multi",
+  "seed": 42,
+  "desired_freq": 100000.0,
+  "desired_amp": 1.00
+}

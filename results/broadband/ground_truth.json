@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "type": "broadband",
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": 275000.00,
+    "freq_min": 200000.00,
+    "freq_max": 350000.00,
+    "amplitude": 0.3162,
+    "power_db": -40.10
+  }
+]

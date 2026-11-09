@@ -1,0 +1,22 @@
+{
+  "tp": 2,
+  "fp": 0,
+  "fn": 0,
+  "precision": 1.0000,
+  "recall": 1.0000,
+  "f1": 1.0000,
+  "false_alarms_per_minute": 0.00,
+  "mean_detection_delay_sec": 0.000000,
+  "window_confusion": {
+    "tp": 256,
+    "fp": 0,
+    "tn": 0,
+    "fn": 0
+  },
+  "type_confusion": {
+    "broadband": {"broadband": 0, "drift": 0, "narrowband": 0, "none": 0},
+    "drift": {"broadband": 0, "drift": 0, "narrowband": 0, "none": 0},
+    "narrowband": {"broadband": 0, "drift": 0, "narrowband": 2, "none": 0},
+    "none": {"broadband": 0, "drift": 0, "narrowband": 0, "none": 0}
+  }
+}

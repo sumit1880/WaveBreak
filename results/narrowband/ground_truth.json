@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "type": "narrowband",
+    "start_time": 0.000000,
+    "end_time": 0.262144,
+    "frequency": 250000.00,
+    "freq_min": 249000.00,
+    "freq_max": 251000.00,
+    "amplitude": 0.3000,
+    "power_db": -10.46
+  }
+]
