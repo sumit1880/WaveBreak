@@ -9,8 +9,7 @@
 ## What It Is
 
 WaveBreak is a C++17 command-line tool that simulates baseband interference, detects it with a
-classical spectral detector, and evaluates detection quality with standard retrieval metrics. It is
-designed as a signal-processing learning project and interview portfolio piece.
+classical spectral detector, and evaluates detection quality with standard retrieval metrics. 
 
 ---
 
