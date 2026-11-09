@@ -1,4 +1,4 @@
-﻿"""
+"""
 WaveBreak Dashboard
 ----------------------------
 Reads exported files from results/<scenario>/ only.
@@ -262,16 +262,18 @@ with tab_metrics:
 with tab_summary:
     st.subheader("Cross-Scenario Summary")
     if summary_df is not None:
-        # Highlight F1 column
-        numeric_cols = [c for c in summary_df.columns if c not in ("scenario",)]
-        st.dataframe(
-            summary_df.style.background_gradient(
-                subset=[c for c in ["f1", "precision", "recall"] if c in summary_df.columns],
-                cmap="RdYlGn",
-                vmin=0, vmax=1,
-            ),
-            use_container_width=True,
-        )
+        # Display summary dataframe
+        try:
+            st.dataframe(
+                summary_df.style.background_gradient(
+                    subset=[c for c in ["f1", "precision", "recall"] if c in summary_df.columns],
+                    cmap="RdYlGn",
+                    vmin=0, vmax=1,
+                ),
+                use_container_width=True,
+            )
+        except Exception:
+            st.dataframe(summary_df, use_container_width=True)
 
         # Bar chart: F1 by scenario
         if "f1" in summary_df.columns and "scenario" in summary_df.columns:
