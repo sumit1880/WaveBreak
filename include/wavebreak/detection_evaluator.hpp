@@ -1,12 +1,12 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
-#include "spectrum_sentinel/interference_detector.hpp"
+#include "wavebreak/common.hpp"
+#include "wavebreak/interference_detector.hpp"
 #include <vector>
 #include <string>
 #include <map>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 struct WindowConfusionMatrix {
     int tp{0};
@@ -51,4 +51,4 @@ public:
     static bool write_events_json(const std::string& filepath, const std::vector<DetectedEvent>& events);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

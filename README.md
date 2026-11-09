@@ -1,4 +1,4 @@
-# Spectrum Sentinel
+﻿# WaveBreak
 
 > **This is a synthetic signal-processing simulator, not a real RF detection system.**
 > It generates artificial I/Q samples in software, processes them, and measures detector performance
@@ -8,7 +8,7 @@
 
 ## What It Is
 
-Spectrum Sentinel is a C++17 command-line tool that simulates baseband interference, detects it with a
+WaveBreak is a C++17 command-line tool that simulates baseband interference, detects it with a
 classical spectral detector, and evaluates detection quality with standard retrieval metrics. It is
 designed as a signal-processing learning project and interview portfolio piece.
 
@@ -104,7 +104,7 @@ WaveBreak/
 ├── .gitignore
 ├── config/
 │   └── default_config.json
-├── include/spectrum_sentinel/
+├── include/wavebreak/
 │   ├── common.hpp
 │   ├── fft_processor.hpp
 │   ├── spectrum_analyzer.hpp
@@ -187,7 +187,7 @@ Expected: **5212 assertions, 0 failures**.
 ### 4 — Run demo (narrowband simulate + analyze + print)
 
 ```powershell
-.\build\spectrum_sentinel.exe demo
+.\build\wavebreak.exe demo
 ```
 
 Or via script (auto-builds if needed):
@@ -199,7 +199,7 @@ Or via script (auto-builds if needed):
 ### 5 — Run experiments (8 scenarios × 30 seeds)
 
 ```powershell
-.\build\spectrum_sentinel.exe evaluate
+.\build\wavebreak.exe evaluate
 ```
 
 Or via script:
@@ -211,20 +211,20 @@ Or via script:
 ### 6 — Benchmark
 
 ```powershell
-.\build\spectrum_sentinel.exe benchmark
+.\build\wavebreak.exe benchmark
 ```
 
 ### 7 — Simulate a single scenario
 
 ```powershell
-.\build\spectrum_sentinel.exe simulate --scenario narrowband
-.\build\spectrum_sentinel.exe simulate --scenario broadband --seed 99
+.\build\wavebreak.exe simulate --scenario narrowband
+.\build\wavebreak.exe simulate --scenario broadband --seed 99
 ```
 
 ### 8 — Analyze saved samples
 
 ```powershell
-.\build\spectrum_sentinel.exe analyze --input results/narrowband/samples.csv --meta results/narrowband/samples_meta.json
+.\build\wavebreak.exe analyze --input results/narrowband/samples.csv --meta results/narrowband/samples_meta.json
 ```
 
 ### 9 — Dashboard (requires Python + Streamlit)
@@ -242,7 +242,7 @@ Compiler: **GCC 16.2.0** · Build type: **Release** · Generator: **Ninja**
 
 ```
 Test suite: 5212 assertions, 0 failures, 0 errors
-CTest: 1/1 Test #1: spectrum_sentinel_tests ..... Passed
+CTest: 1/1 Test #1: wavebreak_tests ..... Passed
 ```
 
 ### Experiment Summary (8 scenarios × 30 seeds)
@@ -273,7 +273,7 @@ CTest: 1/1 Test #1: spectrum_sentinel_tests ..... Passed
 ## CLI Reference
 
 ```
-spectrum_sentinel <command> [options]
+wavebreak <command> [options]
 
 Commands:
   simulate    Generate and save signal scenario

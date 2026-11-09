@@ -1,10 +1,10 @@
-#include "spectrum_sentinel/experiment_runner.hpp"
-#include "spectrum_sentinel/config_loader.hpp"
-#include "spectrum_sentinel/signal_generator.hpp"
-#include "spectrum_sentinel/spectrum_analyzer.hpp"
-#include "spectrum_sentinel/interference_detector.hpp"
-#include "spectrum_sentinel/detection_evaluator.hpp"
-#include "spectrum_sentinel/io_writers.hpp"
+﻿#include "wavebreak/experiment_runner.hpp"
+#include "wavebreak/config_loader.hpp"
+#include "wavebreak/signal_generator.hpp"
+#include "wavebreak/spectrum_analyzer.hpp"
+#include "wavebreak/interference_detector.hpp"
+#include "wavebreak/detection_evaluator.hpp"
+#include "wavebreak/io_writers.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -14,7 +14,7 @@
 #include <vector>
 #include <map>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 struct ScenarioAggregate {
     std::string scenario;
@@ -41,7 +41,7 @@ struct ScenarioAggregate {
 
 int ExperimentRunner::run_all_experiments(const Config& base_config, const std::string& out_dir) {
     std::cout << "========================================================\n"
-              << "       SPECTRUM SENTINEL - EXPERIMENT RUNNER            \n"
+              << "       WAVEBREAK - EXPERIMENT RUNNER            \n"
               << "  Evaluating 8 Scenarios across 30 Seeds (240 runs)     \n"
               << "========================================================\n";
 
@@ -214,7 +214,7 @@ int ExperimentRunner::run_all_experiments(const Config& base_config, const std::
 
 int ExperimentRunner::run_benchmark() {
     std::cout << "========================================================\n"
-              << "           SPECTRUM SENTINEL - BENCHMARK                \n"
+              << "           WAVEBREAK - BENCHMARK                \n"
               << "========================================================\n";
 
     std::string compiler_info = "Unknown C++ Compiler";
@@ -307,7 +307,7 @@ int ExperimentRunner::run_benchmark() {
 
 int ExperimentRunner::run_demo() {
     std::cout << "========================================================\n"
-              << "         SPECTRUM SENTINEL - DEMO EXECUTION             \n"
+              << "         WAVEBREAK - DEMO EXECUTION             \n"
               << "========================================================\n";
 
     Config cfg;
@@ -361,4 +361,4 @@ int ExperimentRunner::run_demo() {
     return 0;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

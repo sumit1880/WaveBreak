@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
-#include "spectrum_sentinel/spectrum_analyzer.hpp"
+#include "wavebreak/common.hpp"
+#include "wavebreak/spectrum_analyzer.hpp"
 #include <vector>
 #include <string>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 struct WindowDetection {
     size_t window_idx{0};
@@ -64,4 +64,4 @@ public:
         size_t min_windows = 2);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

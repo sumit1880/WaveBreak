@@ -1,8 +1,8 @@
-#include "spectrum_sentinel/event_classifier.hpp"
+﻿#include "wavebreak/event_classifier.hpp"
 #include <sstream>
 #include <iomanip>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 std::string EventClassifier::determine_severity(
     const std::string& category,
@@ -67,4 +67,4 @@ void EventClassifier::classify_and_assign_severity(
     event.reason = ss.str();
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

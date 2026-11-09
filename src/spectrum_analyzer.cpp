@@ -1,9 +1,9 @@
-#include "spectrum_sentinel/spectrum_analyzer.hpp"
-#include "spectrum_sentinel/fft_processor.hpp"
+﻿#include "wavebreak/spectrum_analyzer.hpp"
+#include "wavebreak/fft_processor.hpp"
 #include <cmath>
 #include <algorithm>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 std::vector<double> SpectrumAnalyzer::periodic_hann_window(size_t n) {
     if (n == 0) return {};
@@ -152,4 +152,4 @@ std::vector<std::vector<double>> SpectrumAnalyzer::decimate_bins(
     return result;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

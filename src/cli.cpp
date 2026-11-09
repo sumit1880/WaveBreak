@@ -1,11 +1,11 @@
-#include "spectrum_sentinel/cli.hpp"
-#include "spectrum_sentinel/config_loader.hpp"
-#include "spectrum_sentinel/signal_generator.hpp"
-#include "spectrum_sentinel/spectrum_analyzer.hpp"
-#include "spectrum_sentinel/interference_detector.hpp"
-#include "spectrum_sentinel/detection_evaluator.hpp"
-#include "spectrum_sentinel/io_writers.hpp"
-#include "spectrum_sentinel/experiment_runner.hpp"
+﻿#include "wavebreak/cli.hpp"
+#include "wavebreak/config_loader.hpp"
+#include "wavebreak/signal_generator.hpp"
+#include "wavebreak/spectrum_analyzer.hpp"
+#include "wavebreak/interference_detector.hpp"
+#include "wavebreak/detection_evaluator.hpp"
+#include "wavebreak/io_writers.hpp"
+#include "wavebreak/experiment_runner.hpp"
 #include <iostream>
 #include <filesystem>
 #include <string>
@@ -13,18 +13,18 @@
 
 namespace fs = std::filesystem;
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 void CLI::print_usage() {
-    std::cout << "Spectrum Sentinel: Synthetic RF/Baseband Interference Detection Simulator\n"
+    std::cout << "WaveBreak: Synthetic RF/Baseband Interference Detection Simulator\n"
               << "Usage:\n"
-              << "  spectrum_sentinel simulate --scenario <name> [--config <path>] [--seed <num>] [--out <dir>]\n"
-              << "  spectrum_sentinel analyze --input <samples.csv> --meta <samples_meta.json> [--out <dir>]\n"
-              << "  spectrum_sentinel evaluate [--out <dir>]\n"
-              << "  spectrum_sentinel benchmark\n"
-              << "  spectrum_sentinel demo\n"
-              << "  spectrum_sentinel --help | -h\n"
-              << "  spectrum_sentinel --version | -v\n\n"
+              << "  wavebreak simulate --scenario <name> [--config <path>] [--seed <num>] [--out <dir>]\n"
+              << "  wavebreak analyze --input <samples.csv> --meta <samples_meta.json> [--out <dir>]\n"
+              << "  wavebreak evaluate [--out <dir>]\n"
+              << "  wavebreak benchmark\n"
+              << "  wavebreak demo\n"
+              << "  wavebreak --help | -h\n"
+              << "  wavebreak --version | -v\n\n"
               << "Available scenarios:\n"
               << "  clean, low_noise, high_noise, narrowband, broadband, burst, multi, drift\n\n"
               << "Exit Codes:\n"
@@ -35,7 +35,7 @@ void CLI::print_usage() {
 }
 
 void CLI::print_version() {
-    std::cout << "Spectrum Sentinel version 1.0.0 (C++17 simulation)\n";
+    std::cout << "WaveBreak version 1.0.0 (C++17 simulation)\n";
 }
 
 int CLI::run(int argc, char* argv[]) {
@@ -278,4 +278,4 @@ int CLI::run(int argc, char* argv[]) {
     return static_cast<int>(ExitCode::UsageError);
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

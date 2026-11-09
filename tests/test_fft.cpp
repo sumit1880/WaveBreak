@@ -1,10 +1,10 @@
-#include "test_harness.hpp"
-#include "spectrum_sentinel/fft_processor.hpp"
+﻿#include "test_harness.hpp"
+#include "wavebreak/fft_processor.hpp"
 #include <vector>
 #include <cmath>
 #include <algorithm>
 
-using namespace spectrum_sentinel;
+using namespace wavebreak;
 
 void run_fft_tests() {
     std::cout << "[TEST] Running FFT tests...\n";

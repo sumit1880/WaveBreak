@@ -1,10 +1,10 @@
-#include "test_harness.hpp"
-#include "spectrum_sentinel/signal_generator.hpp"
-#include "spectrum_sentinel/spectrum_analyzer.hpp"
-#include "spectrum_sentinel/interference_detector.hpp"
-#include "spectrum_sentinel/detection_evaluator.hpp"
+﻿#include "test_harness.hpp"
+#include "wavebreak/signal_generator.hpp"
+#include "wavebreak/spectrum_analyzer.hpp"
+#include "wavebreak/interference_detector.hpp"
+#include "wavebreak/detection_evaluator.hpp"
 
-using namespace spectrum_sentinel;
+using namespace wavebreak;
 
 void run_detector_and_evaluator_tests() {
     std::cout << "[TEST] Running Detector and Evaluator tests...\n";

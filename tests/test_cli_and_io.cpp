@@ -1,9 +1,9 @@
-#include "test_harness.hpp"
-#include "spectrum_sentinel/io_writers.hpp"
-#include "spectrum_sentinel/cli.hpp"
+﻿#include "test_harness.hpp"
+#include "wavebreak/io_writers.hpp"
+#include "wavebreak/cli.hpp"
 #include <filesystem>
 
-using namespace spectrum_sentinel;
+using namespace wavebreak;
 namespace fs = std::filesystem;
 
 void run_cli_and_io_tests() {
@@ -90,23 +90,23 @@ void run_cli_and_io_tests() {
     // 5. CLI Invocation exit codes
     {
         // --help -> 0
-        char* argv_help[] = { (char*)"spectrum_sentinel", (char*)"--help" };
+        char* argv_help[] = { (char*)"wavebreak", (char*)"--help" };
         ASSERT_TRUE(CLI::run(2, argv_help) == static_cast<int>(ExitCode::Success));
 
         // --version -> 0
-        char* argv_ver[] = { (char*)"spectrum_sentinel", (char*)"--version" };
+        char* argv_ver[] = { (char*)"wavebreak", (char*)"--version" };
         ASSERT_TRUE(CLI::run(2, argv_ver) == static_cast<int>(ExitCode::Success));
 
         // empty args -> 2
-        char* argv_none[] = { (char*)"spectrum_sentinel" };
+        char* argv_none[] = { (char*)"wavebreak" };
         ASSERT_TRUE(CLI::run(1, argv_none) == static_cast<int>(ExitCode::UsageError));
 
         // invalid command -> 2
-        char* argv_inv[] = { (char*)"spectrum_sentinel", (char*)"unknown_cmd" };
+        char* argv_inv[] = { (char*)"wavebreak", (char*)"unknown_cmd" };
         ASSERT_TRUE(CLI::run(2, argv_inv) == static_cast<int>(ExitCode::UsageError));
 
         // invalid scenario flag -> 2
-        char* argv_bad_scen[] = { (char*)"spectrum_sentinel", (char*)"simulate", (char*)"--scenario", (char*)"unknown_scen" };
+        char* argv_bad_scen[] = { (char*)"wavebreak", (char*)"simulate", (char*)"--scenario", (char*)"unknown_scen" };
         ASSERT_TRUE(CLI::run(4, argv_bad_scen) == static_cast<int>(ExitCode::UsageError));
     }
 

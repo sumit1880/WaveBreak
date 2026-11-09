@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.15)
-project(SpectrumSentinel VERSION 1.0.0 LANGUAGES CXX)
+﻿cmake_minimum_required(VERSION 3.15)
+project(WaveBreak VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -40,15 +40,15 @@ set(CORE_SOURCES
     src/experiment_runner.cpp
 )
 
-add_library(spectrum_sentinel_core STATIC ${CORE_SOURCES})
-target_include_directories(spectrum_sentinel_core PUBLIC
+add_library(wavebreak_core STATIC ${CORE_SOURCES})
+target_include_directories(wavebreak_core PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
 
 # Main CLI executable
-add_executable(spectrum_sentinel src/main.cpp)
-target_link_libraries(spectrum_sentinel PRIVATE spectrum_sentinel_core)
+add_executable(wavebreak src/main.cpp)
+target_link_libraries(wavebreak PRIVATE wavebreak_core)
 
 # Tests & CTest registration
 enable_testing()
@@ -63,11 +63,11 @@ set(TEST_SOURCES
     tests/test_detector_and_evaluator.cpp
 )
 
-add_executable(spectrum_sentinel_tests ${TEST_SOURCES})
-target_include_directories(spectrum_sentinel_tests PRIVATE
+add_executable(wavebreak_tests ${TEST_SOURCES})
+target_include_directories(wavebreak_tests PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/tests
 )
-target_link_libraries(spectrum_sentinel_tests PRIVATE spectrum_sentinel_core)
+target_link_libraries(wavebreak_tests PRIVATE wavebreak_core)
 
-add_test(NAME SpectrumSentinelUnitTests COMMAND spectrum_sentinel_tests)
+add_test(NAME WaveBreakUnitTests COMMAND wavebreak_tests)

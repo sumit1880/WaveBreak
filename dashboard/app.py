@@ -1,5 +1,5 @@
-"""
-Spectrum Sentinel Dashboard
+﻿"""
+WaveBreak Dashboard
 ----------------------------
 Reads exported files from results/<scenario>/ only.
 Computes NO detections — all data comes from the C++ core.
@@ -19,12 +19,12 @@ import streamlit as st
 # Page config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Spectrum Sentinel",
+    page_title="WaveBreak",
     page_icon="📡",
     layout="wide",
 )
 
-st.title("📡 Spectrum Sentinel – Interference Detection Dashboard")
+st.title("📡 WaveBreak – Interference Detection Dashboard")
 st.caption(
     "**Synthetic simulator only** — not real RF detection. "
     "All data is read from C++ core output files."

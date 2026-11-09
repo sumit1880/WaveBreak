@@ -1,9 +1,9 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <vector>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 class FFTProcessor {
 public:
@@ -27,4 +27,4 @@ private:
     static void transform(SampleVector& data, bool inverse);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

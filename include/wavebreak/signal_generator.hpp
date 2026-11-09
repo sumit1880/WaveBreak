@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <random>
 #include <cstdint>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 class BoxMullerRng {
 public:
@@ -42,4 +42,4 @@ private:
     Config config_;
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

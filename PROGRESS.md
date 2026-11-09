@@ -1,4 +1,4 @@
-# Spectrum Sentinel – Progress
+﻿# WaveBreak – Progress
 
 ## Phase 0 — DONE ✓
 Toolchain verified: g++ 16.2.0, cmake 4.4.5, ninja, git 2.47.1, python 3.13.15. Git repo initialised.

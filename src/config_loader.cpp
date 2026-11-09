@@ -1,11 +1,11 @@
-#include "spectrum_sentinel/config_loader.hpp"
+﻿#include "wavebreak/config_loader.hpp"
 #include <fstream>
 #include <sstream>
 #include <cctype>
 #include <algorithm>
 #include <set>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 static inline void skip_whitespace(const std::string& str, size_t& pos) {
     while (pos < str.size() && (std::isspace(static_cast<unsigned char>(str[pos])))) {
@@ -201,4 +201,4 @@ void ConfigLoader::validate(const Config& cfg) {
     }
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

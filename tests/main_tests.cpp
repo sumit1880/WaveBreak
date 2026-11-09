@@ -1,4 +1,4 @@
-#include "test_harness.hpp"
+﻿#include "test_harness.hpp"
 #include <iostream>
 
 void run_fft_tests();
@@ -10,7 +10,7 @@ void run_detector_and_evaluator_tests();
 
 int main() {
     std::cout << "========================================" << std::endl;
-    std::cout << "  SPECTRUM SENTINEL - TEST SUITE RUN   " << std::endl;
+    std::cout << "  WAVEBREAK - TEST SUITE RUN   " << std::endl;
     std::cout << "========================================" << std::endl;
 
     run_fft_tests();

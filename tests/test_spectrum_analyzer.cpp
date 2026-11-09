@@ -1,9 +1,9 @@
-#include "test_harness.hpp"
-#include "spectrum_sentinel/spectrum_analyzer.hpp"
+﻿#include "test_harness.hpp"
+#include "wavebreak/spectrum_analyzer.hpp"
 #include <cmath>
 #include <limits>
 
-using namespace spectrum_sentinel;
+using namespace wavebreak;
 
 void run_spectrum_analyzer_tests() {
     std::cout << "[TEST] Running Spectrum Analyzer tests...\n";

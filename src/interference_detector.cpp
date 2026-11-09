@@ -1,10 +1,10 @@
-#include "spectrum_sentinel/interference_detector.hpp"
-#include "spectrum_sentinel/event_classifier.hpp"
+﻿#include "wavebreak/interference_detector.hpp"
+#include "wavebreak/event_classifier.hpp"
 #include <algorithm>
 #include <cmath>
 #include <iostream>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 double InterferenceDetector::compute_window_noise_floor_lin(
     const std::vector<double>& window_power_db,
@@ -407,4 +407,4 @@ std::vector<DetectedEvent> InterferenceDetector::merge_window_detections(
     return events;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <complex>
 #include <vector>
@@ -7,7 +7,7 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 constexpr double PI = 3.141592653589793238462643383279502884;
 
@@ -67,4 +67,4 @@ inline void validate_parameters(double fs, size_t fft_size, size_t hop_size, dou
     }
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

@@ -1,9 +1,9 @@
-#include "spectrum_sentinel/signal_generator.hpp"
-#include "spectrum_sentinel/fft_processor.hpp"
+﻿#include "wavebreak/signal_generator.hpp"
+#include "wavebreak/fft_processor.hpp"
 #include <cmath>
 #include <iostream>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 BoxMullerRng::BoxMullerRng(uint64_t seed)
     : rng_(seed), uniform_dist_(0.0, 1.0), has_cached_(false), cached_val_(0.0) {}
@@ -275,4 +275,4 @@ SimulationResult SignalGenerator::generate_scenario(const Config& config) {
     return result;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

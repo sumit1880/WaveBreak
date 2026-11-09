@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/interference_detector.hpp"
+#include "wavebreak/interference_detector.hpp"
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 class EventClassifier {
 public:
@@ -17,4 +17,4 @@ public:
         double margin_db);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

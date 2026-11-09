@@ -1,6 +1,6 @@
-#include "spectrum_sentinel/fft_processor.hpp"
+﻿#include "wavebreak/fft_processor.hpp"
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 void FFTProcessor::bit_reverse_copy(SampleVector& data) {
     size_t n = data.size();
@@ -92,4 +92,4 @@ SampleVector FFTProcessor::idft_naive(const SampleVector& data) {
     return out;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

@@ -1,9 +1,9 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <string>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 class ExperimentRunner {
 public:
@@ -12,4 +12,4 @@ public:
     static int run_demo();
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

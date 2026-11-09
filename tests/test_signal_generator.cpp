@@ -1,9 +1,9 @@
-#include "test_harness.hpp"
-#include "spectrum_sentinel/signal_generator.hpp"
+﻿#include "test_harness.hpp"
+#include "wavebreak/signal_generator.hpp"
 #include <cmath>
 #include <numeric>
 
-using namespace spectrum_sentinel;
+using namespace wavebreak;
 
 void run_signal_generator_tests() {
     std::cout << "[TEST] Running Signal Generator tests...\n";

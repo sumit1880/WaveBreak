@@ -1,8 +1,8 @@
-# Interview Guide – Spectrum Sentinel
+﻿# Interview Guide – WaveBreak
 
 ## Pipeline in One Paragraph
 
-Spectrum Sentinel generates complex baseband signals (I/Q samples) in C++17 using a Mersenne-Twister
+WaveBreak generates complex baseband signals (I/Q samples) in C++17 using a Mersenne-Twister
 RNG and hand-written Box-Muller AWGN. Each scenario adds synthetic interference according to its
 parameters, then writes the samples to CSV alongside a JSON ground-truth record. The analysis pipeline
 divides the samples into overlapping windows (hop = 512 samples), applies a **periodic Hann window**,
@@ -125,7 +125,7 @@ This simulator makes idealised assumptions that don't hold in practice:
    (seed sweep, not an independent dataset).
 5. **Perfectly modelled interference** — real jammers use spread-spectrum, frequency hopping, etc.
 
-Spectrum Sentinel is a signal-processing testbed and interview project, not a deployable RF system.
+WaveBreak is a signal-processing testbed and interview project, not a deployable RF system.
 
 ---
 

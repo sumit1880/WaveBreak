@@ -1,4 +1,4 @@
-#include "spectrum_sentinel/io_writers.hpp"
+﻿#include "wavebreak/io_writers.hpp"
 #include <fstream>
 #include <sstream>
 #include <iomanip>
@@ -7,7 +7,7 @@
 
 namespace fs = std::filesystem;
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 bool IoWriters::ensure_directory(const std::string& dirpath) {
     if (dirpath.empty()) return true;
@@ -248,4 +248,4 @@ bool IoWriters::write_spectrogram_csv(
     return true;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

@@ -1,9 +1,9 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <vector>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 struct SpectrogramResult {
     std::vector<std::vector<double>> power_db; // [window_index][bin_index]
@@ -67,4 +67,4 @@ public:
         size_t max_bins = 512);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <string>
 #include <unordered_map>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 class ConfigLoader {
 public:
@@ -21,4 +21,4 @@ public:
     static void validate(const Config& cfg);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

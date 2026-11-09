@@ -1,11 +1,11 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 $mingw = "C:\Users\sumit\Downloads\winlibs-x86_64-posix-seh-gcc-16.2.0-mingw-w64ucrt-14.0.0-r3\mingw64\bin"
 $env:Path = "$mingw;C:\Program Files\CMake\bin;C:\Users\sumit\bin\git\cmd;$env:Path"
 Set-Location "C:\Users\sumit\OneDrive\Desktop\WaveBreak"
 
 # 1. Find or build exe
 $exe = $null
-foreach ($candidate in @(".\build\spectrum_sentinel.exe",".\build\Release\spectrum_sentinel.exe")) {
+foreach ($candidate in @(".\build\wavebreak.exe",".\build\Release\wavebreak.exe")) {
     if (Test-Path $candidate) { $exe = $candidate; break }
 }
 if (-not $exe) {
@@ -14,7 +14,7 @@ if (-not $exe) {
     if ($LASTEXITCODE -ne 0) { throw "cmake configure failed" }
     & cmake --build build
     if ($LASTEXITCODE -ne 0) { throw "cmake build failed" }
-    foreach ($candidate in @(".\build\spectrum_sentinel.exe",".\build\Release\spectrum_sentinel.exe")) {
+    foreach ($candidate in @(".\build\wavebreak.exe",".\build\Release\wavebreak.exe")) {
         if (Test-Path $candidate) { $exe = $candidate; break }
     }
     if (-not $exe) { throw "Exe still not found after build" }

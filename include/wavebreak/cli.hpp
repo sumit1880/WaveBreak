@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <string>
 #include <vector>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 enum class ExitCode : int {
     Success = 0,
@@ -21,4 +21,4 @@ public:
     static void print_version();
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

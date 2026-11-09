@@ -1,5 +1,5 @@
-#include "spectrum_sentinel/detection_evaluator.hpp"
-#include "spectrum_sentinel/io_writers.hpp"
+﻿#include "wavebreak/detection_evaluator.hpp"
+#include "wavebreak/io_writers.hpp"
 #include <fstream>
 #include <sstream>
 #include <iomanip>
@@ -9,7 +9,7 @@
 
 namespace fs = std::filesystem;
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 EvaluationMetrics DetectionEvaluator::evaluate(
     const std::vector<GroundTruthEvent>& truth,
@@ -286,4 +286,4 @@ bool DetectionEvaluator::write_events_json(
     return true;
 }
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak

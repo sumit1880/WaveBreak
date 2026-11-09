@@ -1,7 +1,7 @@
-#include "test_harness.hpp"
-#include "spectrum_sentinel/config_loader.hpp"
+﻿#include "test_harness.hpp"
+#include "wavebreak/config_loader.hpp"
 
-using namespace spectrum_sentinel;
+using namespace wavebreak;
 
 void run_config_loader_tests() {
     std::cout << "[TEST] Running Config Loader tests...\n";

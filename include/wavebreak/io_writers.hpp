@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
-#include "spectrum_sentinel/common.hpp"
+#include "wavebreak/common.hpp"
 #include <string>
 #include <vector>
 
-namespace spectrum_sentinel {
+namespace wavebreak {
 
 class IoWriters {
 public:
@@ -42,4 +42,4 @@ public:
         const std::vector<std::vector<double>>& spectrogram_db);
 };
 
-} // namespace spectrum_sentinel
+} // namespace wavebreak
